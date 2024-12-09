@@ -59,6 +59,7 @@ import git.artdeell.skymodloader.R;
 import git.artdeell.skymodloader.SMLApplication;
 import git.artdeell.skymodloader.ImGUITextInput;
 import git.artdeell.skymodloader.LoadVideoView;
+import kotlin.KotlinVersion;
 
 public class GameActivity extends TGCNativeActivity {
     static final boolean ENABLE_DISPLAY_CUTOUT_MODE = true;
@@ -88,6 +89,10 @@ public class GameActivity extends TGCNativeActivity {
     private boolean m_isKeyboardShowing = false;
     private RelativeLayout m_relativeLayout;
     SystemAccounts_android m_systemAccounts = null;
+    private boolean m_lTriggerPressed = false;
+    private boolean m_rTriggerPressed = false;
+    private boolean m_motionEventsDisabled = false;
+    private int m_lastDpadDirection = 23;
     SystemIO_android m_systemIO = null;
     SystemUI_android m_systemUI = null;
     public boolean portraitOnResume = false;
@@ -149,7 +154,7 @@ public class GameActivity extends TGCNativeActivity {
 
     public native void onBackPressedNative();
 
-    public native void onButtonPressNative(int i, boolean z, double d);
+    public native boolean onButtonPressNative(int i, boolean z, boolean z2, double d);
 
     public native void onCommerceUpdateNative(boolean z, boolean z2, boolean z3);
 
@@ -232,6 +237,7 @@ public class GameActivity extends TGCNativeActivity {
         DialogJNI.setActivity(this);
         hideNavigationFullScreen(getWindow().getDecorView());
         getWindow().addFlags(2097280);
+        //getWindow().setSoftInputMode(48);
         tryEnablingDisplayCutoutMode();
         setContentView(R.layout.tgc_logo);
         this.m_relativeLayout = findViewById(R.id.sml_relLayout);
@@ -285,7 +291,7 @@ public class GameActivity extends TGCNativeActivity {
             }
         });
         if (Build.VERSION.SDK_INT >= 30) {
-            //setupDisplayListener();
+            setupDisplayListener();
         }
 
     }
@@ -662,7 +668,7 @@ public class GameActivity extends TGCNativeActivity {
         }
         InputManager inputManager = (InputManager) getBaseContext().getSystemService(Context.INPUT_SERVICE);
         if (inputManager != null) {
-            inputManager.registerInputDeviceListener(new InputManager.InputDeviceListener() { // from class: com.tgc.sky.GameActivity.5
+            inputManager.registerInputDeviceListener(new InputManager.InputDeviceListener() {
                 @Override
                 public void onInputDeviceChanged(int i2) {
                 }
@@ -695,16 +701,10 @@ public class GameActivity extends TGCNativeActivity {
         if ((keyEvent.getSource() & InputDevice.SOURCE_KEYBOARD) == InputDevice.SOURCE_KEYBOARD) {
             imgui.onKey(i, true);
         }
-        if (this.mGameControllerIds.contains(keyEvent.getDeviceId())) {
-            if ((keyEvent.getSource() & 1025) == 1025 || (keyEvent.getSource() & InputDeviceCompat.SOURCE_JOYSTICK) == 16777232) {
-                if (keyEvent.getRepeatCount() == 0) {
-                    onButtonPressNative(i, true, keyEvent.getEventTime());
-                }
+        if (keyEvent.getRepeatCount() == 0) {
+            if (onButtonPressNative(i, this.mGameControllerIds.contains(Integer.valueOf(keyEvent.getDeviceId())) && ((keyEvent.getSource() & 1025) == 1025 || (keyEvent.getSource() & 16777232) == 16777232), true, keyEvent.getEventTime())) {
                 return true;
             }
-        } else if (i == 4 && keyEvent.getRepeatCount() == 0) {
-            onButtonPressNative(i, true, keyEvent.getEventTime());
-            return true;
         }
         return super.onKeyDown(i, keyEvent);
     }
@@ -713,34 +713,64 @@ public class GameActivity extends TGCNativeActivity {
         if ((keyEvent.getSource() & InputDevice.SOURCE_KEYBOARD) == InputDevice.SOURCE_KEYBOARD) {
             imgui.onKey(i, false);
         }
-        if (this.mGameControllerIds.contains(keyEvent.getDeviceId())) {
-            if ((keyEvent.getSource() & 1025) == 1025 || (keyEvent.getSource() & InputDeviceCompat.SOURCE_JOYSTICK) == 16777232) {
-                onButtonPressNative(i, false, keyEvent.getEventTime());
+        if (keyEvent.getRepeatCount() == 0) {
+            if (onButtonPressNative(i, this.mGameControllerIds.contains(Integer.valueOf(keyEvent.getDeviceId())) && ((keyEvent.getSource() & 1025) == 1025 || (keyEvent.getSource() & 16777232) == 16777232), false, keyEvent.getEventTime())) {
                 return true;
             }
-        } else if (i == 4) {
-            onButtonPressNative(i, false, keyEvent.getEventTime());
-            return true;
         }
         return super.onKeyDown(i, keyEvent);
     }
 
     public boolean onGenericMotionEvent(MotionEvent motionEvent) {
-        if (this.mGameControllerIds.contains(motionEvent.getDeviceId())) {
-            int action = motionEvent.getAction();
-            if ((motionEvent.getSource() & 1025) == 1025 || (motionEvent.getSource() & InputDeviceCompat.SOURCE_JOYSTICK) == 16777232) {
-                if ((action & 255) == 2) {
-                    onStickEventNative(motionEvent.getAxisValue(0), motionEvent.getAxisValue(1), motionEvent.getAxisValue(11), motionEvent.getAxisValue(14));
-                }
+        int i;
+        if (this.m_motionEventsDisabled) {
+            return true;
+        }
+        if (this.mGameControllerIds.contains(Integer.valueOf(motionEvent.getDeviceId()))) {
+            float axisValue = motionEvent.getAxisValue(17);
+            float axisValue2 = motionEvent.getAxisValue(18);
+            boolean z = Float.compare(axisValue, 1.0f) == 0;
+            boolean z2 = Float.compare(axisValue2, 1.0f) == 0;
+            if (z != this.m_lTriggerPressed) {
+                onButtonPressNative(104, true, z, motionEvent.getEventTime());
+            }
+            if (z2 != this.m_rTriggerPressed) {
+                onButtonPressNative(105, true, z2, motionEvent.getEventTime());
+            }
+            if (z != this.m_lTriggerPressed || z2 != this.m_rTriggerPressed) {
+                this.m_lTriggerPressed = z;
+                this.m_rTriggerPressed = z2;
                 return true;
-            } else if ((motionEvent.getSource() & InputDeviceCompat.SOURCE_DPAD) == 513) {
-                if ((action & 255) == 2) {
-                    onDpadEventNative(motionEvent.getAxisValue(0), motionEvent.getAxisValue(1), motionEvent.getEventTime());
+            }
+            float axisValue3 = motionEvent.getAxisValue(15);
+            float axisValue4 = motionEvent.getAxisValue(16);
+            if (Float.compare(axisValue3, -1.0f) == 0) {
+                i = 21;
+            } else if (Float.compare(axisValue3, 1.0f) == 0) {
+                i = 22;
+            } else if (Float.compare(axisValue4, -1.0f) == 0) {
+                i = 19;
+            } else {
+                i = Float.compare(axisValue4, 1.0f) == 0 ? 20 : 23;
+            }
+            int i2 = this.m_lastDpadDirection;
+            if (i != i2) {
+                if (i2 != 23) {
+                    onButtonPressNative(i2, true, false, motionEvent.getEventTime());
                 }
+                if (i != 23) {
+                    onButtonPressNative(i, true, true, motionEvent.getEventTime());
+                }
+                this.m_lastDpadDirection = i;
+                return true;
+            }
+            if ((motionEvent.getSource() & 16777232) == 16777232 && (motionEvent.getAction() & KotlinVersion.MAX_COMPONENT_VALUE) == 2) {
+                onStickEventNative(motionEvent.getAxisValue(0), motionEvent.getAxisValue(1), motionEvent.getAxisValue(11), motionEvent.getAxisValue(14));
                 return true;
             }
         }
-        return false;
+        return super.onGenericMotionEvent(motionEvent);
+
     }
 
     public void addActivePanel(BasePanel basePanel) {

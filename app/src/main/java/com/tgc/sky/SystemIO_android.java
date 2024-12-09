@@ -105,6 +105,7 @@ public class SystemIO_android {
     }
 
     enum UserPreferenceFloatKey {
+        kUserPreference_MasterVolume,
         kUserPreference_MusicVolume,
         kUserPreference_SfxVolume,
         kUserPreference_InstrumentVolume,
@@ -141,8 +142,10 @@ public class SystemIO_android {
         kUserPreference_DevicePrivateKey,
         kUserPreference_DisplayPreferenceData,
         kUserPreference_FirstOpenTimestamp,
-        kUserPreference_ButtonMapping
-    }
+        kUserPreference_ButtonMapping,
+        kUserPreference_StartLevel
+
+        }
 
 
     public boolean GetResourceBundlesEnabled() {
@@ -354,252 +357,266 @@ public class SystemIO_android {
         static final /* synthetic */ int[] $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey;
         static final /* synthetic */ int[] $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceIntKey;
         static final /* synthetic */ int[] $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey;
-        static final /* synthetic */ int[] $SwitchMap$com$tgc$sky$SystemIO_android$VideoCodec;
 
         static {
             int[] iArr = new int[UserPreferenceFloatKey.values().length];
             $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey = iArr;
             try {
-                iArr[UserPreferenceFloatKey.kUserPreference_MusicVolume.ordinal()] = 1;
+                iArr[UserPreferenceFloatKey.kUserPreference_MasterVolume.ordinal()] = 1;
             } catch (NoSuchFieldError unused) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_SfxVolume.ordinal()] = 2;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_MusicVolume.ordinal()] = 2;
             } catch (NoSuchFieldError unused2) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_InstrumentVolume.ordinal()] = 3;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_SfxVolume.ordinal()] = 3;
             } catch (NoSuchFieldError unused3) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_VideoVolume.ordinal()] = 4;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_InstrumentVolume.ordinal()] = 4;
             } catch (NoSuchFieldError unused4) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_HdrBrightness.ordinal()] = 5;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_VideoVolume.ordinal()] = 5;
             } catch (NoSuchFieldError unused5) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_HdrUIBrightness.ordinal()] = 6;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_HdrBrightness.ordinal()] = 6;
             } catch (NoSuchFieldError unused6) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_HdrBlackLevel.ordinal()] = 7;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_HdrUIBrightness.ordinal()] = 7;
             } catch (NoSuchFieldError unused7) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_MotionBlurScalar.ordinal()] = 8;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_HdrBlackLevel.ordinal()] = 8;
             } catch (NoSuchFieldError unused8) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_CameraRotationSpeed.ordinal()] = 9;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_MotionBlurScalar.ordinal()] = 9;
             } catch (NoSuchFieldError unused9) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_CameraZoomSpeed.ordinal()] = 10;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_CameraRotationSpeed.ordinal()] = 10;
             } catch (NoSuchFieldError unused10) {
+            }
+            try {
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceFloatKey[UserPreferenceFloatKey.kUserPreference_CameraZoomSpeed.ordinal()] = 11;
+            } catch (NoSuchFieldError unused11) {
             }
             int[] iArr2 = new int[UserPreferenceStringKey.values().length];
             $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey = iArr2;
             try {
                 iArr2[UserPreferenceStringKey.kUserPreference_Version.ordinal()] = 1;
-            } catch (NoSuchFieldError unused11) {
-            }
-            try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_UserId.ordinal()] = 2;
             } catch (NoSuchFieldError unused12) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_LastSessionId.ordinal()] = 3;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_UserId.ordinal()] = 2;
             } catch (NoSuchFieldError unused13) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_QualityOption.ordinal()] = 4;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_LastSessionId.ordinal()] = 3;
             } catch (NoSuchFieldError unused14) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_AccountLinkPromptDismissedEpoch.ordinal()] = 5;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_QualityOption.ordinal()] = 4;
             } catch (NoSuchFieldError unused15) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_DeviceCapability_HashId.ordinal()] = 6;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_AccountLinkPromptDismissedEpoch.ordinal()] = 5;
             } catch (NoSuchFieldError unused16) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_DeviceCapability_GpuRating.ordinal()] = 7;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_DeviceCapability_HashId.ordinal()] = 6;
             } catch (NoSuchFieldError unused17) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_LastPlayedAccountType.ordinal()] = 8;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_DeviceCapability_GpuRating.ordinal()] = 7;
             } catch (NoSuchFieldError unused18) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_AutomatedTestData.ordinal()] = 9;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_LastPlayedAccountType.ordinal()] = 8;
             } catch (NoSuchFieldError unused19) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_DevicePublicKey.ordinal()] = 10;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_AutomatedTestData.ordinal()] = 9;
             } catch (NoSuchFieldError unused20) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_DevicePrivateKey.ordinal()] = 11;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_DevicePublicKey.ordinal()] = 10;
             } catch (NoSuchFieldError unused21) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_DisplayPreferenceData.ordinal()] = 12;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_DevicePrivateKey.ordinal()] = 11;
             } catch (NoSuchFieldError unused22) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_FirstOpenTimestamp.ordinal()] = 13;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_DisplayPreferenceData.ordinal()] = 12;
             } catch (NoSuchFieldError unused23) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_ButtonMapping.ordinal()] = 14;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_FirstOpenTimestamp.ordinal()] = 13;
             } catch (NoSuchFieldError unused24) {
+            }
+            try {
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_ButtonMapping.ordinal()] = 14;
+            } catch (NoSuchFieldError unused25) {
+            }
+            try {
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceStringKey[UserPreferenceStringKey.kUserPreference_StartLevel.ordinal()] = 15;
+            } catch (NoSuchFieldError unused26) {
             }
             int[] iArr3 = new int[UserPreferenceIntKey.values().length];
             $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceIntKey = iArr3;
             try {
                 iArr3[UserPreferenceIntKey.kUserPreference_TimeOffset.ordinal()] = 1;
-            } catch (NoSuchFieldError unused25) {
-            }
-            try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceIntKey[UserPreferenceIntKey.kUserPreference_AgreedTOSVersion.ordinal()] = 2;
-            } catch (NoSuchFieldError unused26) {
-            }
-            try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceIntKey[UserPreferenceIntKey.kUserPreference_InstrumentLayout.ordinal()] = 3;
             } catch (NoSuchFieldError unused27) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceIntKey[UserPreferenceIntKey.kUserPreference_AltInstrumentLayout.ordinal()] = 4;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceIntKey[UserPreferenceIntKey.kUserPreference_AgreedTOSVersion.ordinal()] = 2;
             } catch (NoSuchFieldError unused28) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceIntKey[UserPreferenceIntKey.kUserPreference_QualityFps.ordinal()] = 5;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceIntKey[UserPreferenceIntKey.kUserPreference_InstrumentLayout.ordinal()] = 3;
             } catch (NoSuchFieldError unused29) {
+            }
+            try {
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceIntKey[UserPreferenceIntKey.kUserPreference_AltInstrumentLayout.ordinal()] = 4;
+            } catch (NoSuchFieldError unused30) {
+            }
+            try {
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceIntKey[UserPreferenceIntKey.kUserPreference_QualityFps.ordinal()] = 5;
+            } catch (NoSuchFieldError unused31) {
             }
             int[] iArr4 = new int[UserPreferenceBoolKey.values().length];
             $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey = iArr4;
             try {
                 iArr4[UserPreferenceBoolKey.kUserPreference_WideScreenHint.ordinal()] = 1;
-            } catch (NoSuchFieldError unused30) {
-            }
-            try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_PortraitModeAllowed.ordinal()] = 2;
-            } catch (NoSuchFieldError unused31) {
-            }
-            try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_AskedToEnableHighResScreenshots.ordinal()] = 3;
             } catch (NoSuchFieldError unused32) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_EnableHighResScreenshots.ordinal()] = 4;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_PortraitModeAllowed.ordinal()] = 2;
             } catch (NoSuchFieldError unused33) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_ParentalDisableChat.ordinal()] = 5;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_AskedToEnableHighResScreenshots.ordinal()] = 3;
             } catch (NoSuchFieldError unused34) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_ParentalDisableShop.ordinal()] = 6;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_EnableHighResScreenshots.ordinal()] = 4;
             } catch (NoSuchFieldError unused35) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_ProControls.ordinal()] = 7;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_ParentalDisableChat.ordinal()] = 5;
             } catch (NoSuchFieldError unused36) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_LeftHanded.ordinal()] = 8;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_ParentalDisableShop.ordinal()] = 6;
             } catch (NoSuchFieldError unused37) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_MixedCameraMode.ordinal()] = 9;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_ProControls.ordinal()] = 7;
             } catch (NoSuchFieldError unused38) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_InvertCamera.ordinal()] = 10;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_LeftHanded.ordinal()] = 8;
             } catch (NoSuchFieldError unused39) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_InvertFlight.ordinal()] = 11;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_MixedCameraMode.ordinal()] = 9;
             } catch (NoSuchFieldError unused40) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_EnableHaptics.ordinal()] = 12;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_InvertCamera.ordinal()] = 10;
             } catch (NoSuchFieldError unused41) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_InvertCameraGamepad.ordinal()] = 13;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_InvertFlight.ordinal()] = 11;
             } catch (NoSuchFieldError unused42) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_InvertFlightGamepad.ordinal()] = 14;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_EnableHaptics.ordinal()] = 12;
             } catch (NoSuchFieldError unused43) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_EnableHapticsGamepad.ordinal()] = 15;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_InvertCameraGamepad.ordinal()] = 13;
             } catch (NoSuchFieldError unused44) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_InvertCameraDesktop.ordinal()] = 16;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_InvertFlightGamepad.ordinal()] = 14;
             } catch (NoSuchFieldError unused45) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_InvertFlightDesktop.ordinal()] = 17;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_EnableHapticsGamepad.ordinal()] = 15;
             } catch (NoSuchFieldError unused46) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_ReturningPlayer.ordinal()] = 18;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_InvertCameraDesktop.ordinal()] = 16;
             } catch (NoSuchFieldError unused47) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_Instrument_RemoteNotes_Freeplay.ordinal()] = 19;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_InvertFlightDesktop.ordinal()] = 17;
             } catch (NoSuchFieldError unused48) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_Instrument_RemoteNotes_JoinedSheet.ordinal()] = 20;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_ReturningPlayer.ordinal()] = 18;
             } catch (NoSuchFieldError unused49) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_DisableCrossPlay.ordinal()] = 21;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_Instrument_RemoteNotes_Freeplay.ordinal()] = 19;
             } catch (NoSuchFieldError unused50) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_EnableDarkMode.ordinal()] = 22;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_Instrument_RemoteNotes_JoinedSheet.ordinal()] = 20;
             } catch (NoSuchFieldError unused51) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_Fullscreen.ordinal()] = 23;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_DisableCrossPlay.ordinal()] = 21;
             } catch (NoSuchFieldError unused52) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_AutoSkipCutscenes.ordinal()] = 24;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_EnableDarkMode.ordinal()] = 22;
             } catch (NoSuchFieldError unused53) {
             }
             try {
-                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_VideoSubtitles.ordinal()] = 25;
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_Fullscreen.ordinal()] = 23;
             } catch (NoSuchFieldError unused54) {
             }
+            try {
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_AutoSkipCutscenes.ordinal()] = 24;
+            } catch (NoSuchFieldError unused55) {
+            }
+            try {
+                $SwitchMap$com$tgc$sky$LocalPreferences$UserPreferenceBoolKey[UserPreferenceBoolKey.kUserPreference_VideoSubtitles.ordinal()] = 25;
+            } catch (NoSuchFieldError unused56) {
+            }
 
-            int[] iArr5 = new int[VideoCodec.values().length];
-            $SwitchMap$com$tgc$sky$SystemIO_android$VideoCodec = iArr5;
-            try {
-                iArr5[VideoCodec.kVideoCodecH264.ordinal()] = 1;
-            } catch (NoSuchFieldError unused49) {
-            }
-            try {
-                $SwitchMap$com$tgc$sky$SystemIO_android$VideoCodec[VideoCodec.kVideoCodecHEVC.ordinal()] = 2;
-            } catch (NoSuchFieldError unused50) {
-            }
         }
     }
 
     boolean StartRecording(String str, int i, int i2, int i3, int i4, boolean z, int i5, boolean z2) {
         this.m_isGameRecorder = true;
-        String str2 = C11334.$SwitchMap$com$tgc$sky$SystemIO_android$VideoCodec[VideoCodec.values()[i3].ordinal()] != 2 ? "video/avc" : "video/hevc";
+        String str2 = C115312.$SwitchMap$com$tgc$sky$SystemIO_android$VideoCodec[VideoCodec.values()[i3].ordinal()] != 2 ? "video/avc" : "video/hevc";
         this.m_isRecording = true;
         return this.m_videoRecorder.startRecordingWithFilename(str, i, i2,str2, i4, z, i5, z2);
+    }
+
+    static /* synthetic */ class C115312 {
+        static final /* synthetic */ int[] $SwitchMap$com$tgc$sky$SystemIO_android$VideoCodec;
+
+        static {
+            int[] iArr = new int[VideoCodec.values().length];
+            $SwitchMap$com$tgc$sky$SystemIO_android$VideoCodec = iArr;
+            try {
+                iArr[VideoCodec.kVideoCodecH264.ordinal()] = 1;
+            } catch (NoSuchFieldError unused) {
+            }
+            try {
+                $SwitchMap$com$tgc$sky$SystemIO_android$VideoCodec[VideoCodec.kVideoCodecHEVC.ordinal()] = 2;
+            } catch (NoSuchFieldError unused2) {
+            }
+        }
     }
 
     boolean StopRecording() {
@@ -723,6 +740,9 @@ public class SystemIO_android {
                         return "first_open_ts";
                     case 14:
                         return "button_mapping";
+                    case 15:
+                        return "start_level";
+
                     default:
                         return null;
                 }
@@ -784,24 +804,26 @@ public class SystemIO_android {
             case KEY_TYPE_FLOAT:
                 switch (preference + 1) {
                     case 1:
-                        return "kUserPreference_MusicVolume";
+                        return "kUserPreference_MasterVolume";
                     case 2:
-                        return "kUserPreference_SfxVolume";
+                        return "kUserPreference_MusicVolume";
                     case 3:
-                        return "kUserPreference_InstrumentVolume";
+                        return "kUserPreference_SfxVolume";
                     case 4:
-                        return "kUserPreference_VideoVolume";
+                        return "kUserPreference_InstrumentVolume";
                     case 5:
-                        return "kUserPreference_HdrBrightness";
+                        return "kUserPreference_VideoVolume";
                     case 6:
-                        return "kUserPreference_HdrUIBrightness";
+                        return "kUserPreference_HdrBrightness";
                     case 7:
-                        return "kUserPreference_HdrBlackLevel";
+                        return "kUserPreference_HdrUIBrightness";
                     case 8:
-                        return "kUserPreference_MotionBlurScalar";
+                        return "kUserPreference_HdrBlackLevel";
                     case 9:
-                        return "kUserPreference_CameraRotationSpeed";
+                        return "kUserPreference_MotionBlurScalar";
                     case 10:
+                        return "kUserPreference_CameraRotationSpeed";
+                    case 11:
                         return "kUserPreference_CameraZoomSpeed";
                     default:
                         return null;
