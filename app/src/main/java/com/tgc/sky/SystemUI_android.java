@@ -1377,6 +1377,50 @@ public class SystemUI_android {
         GetTextLabelArgs.pos.autoAnchor = z8;
         this.m_textLabelManager.UpdateTextLabel(GetTextLabelArgs);
     }
+
+    //0.28.5
+    public void UpdateTextLabel(int i, boolean z, boolean z2, boolean z3, boolean z4, boolean z5, float f, float f2, boolean z6, int i2, boolean z7, int i3, float[] fArr, float[] fArr2, float f3, float[] fArr3, float[] fArr4, float f4, float f5, float f6, int i4, int i5, boolean z8, float f7, float f8, float f9, float f10, float f11, float f12, float f13, float f14, boolean z9, boolean z10) {
+        TextLabelArgs GetTextLabelArgs = this.m_textLabelManager.GetTextLabelArgs();
+        if (GetTextLabelArgs == null) {
+            return;
+        }
+        GetTextLabelArgs.labelId = i;
+        GetTextLabelArgs.attrs.fontName = "";
+        GetTextLabelArgs.attrs.hasBackground = z;
+        GetTextLabelArgs.attrs.hasShadow = z2;
+        GetTextLabelArgs.attrs.forceBold = z3;
+        GetTextLabelArgs.attrs.adjustFontSizeToFitWidth = z4;
+        GetTextLabelArgs.attrs.ignoreMarkupOptimization = z5;
+        GetTextLabelArgs.attrs.fontSize = f;
+        GetTextLabelArgs.attrs.scale = f2;
+        GetTextLabelArgs.attrs.trilinearMinification = z6;
+        GetTextLabelArgs.attrs.maxNumberOfLines = i2;
+        GetTextLabelArgs.attrs.truncateWithEllipses = z7;
+        GetTextLabelArgs.attrs.textAlignment = SystemHAlignment.values()[i3];
+        GetTextLabelArgs.attrs.textColor = fArr;
+        GetTextLabelArgs.attrs.bgColor = fArr2;
+        GetTextLabelArgs.attrs.bgCornerRadius = f3;
+        GetTextLabelArgs.attrs.shadowColor = fArr3;
+        GetTextLabelArgs.attrs.shadowOffset = fArr4;
+        GetTextLabelArgs.pos.f1049x = f4;
+        GetTextLabelArgs.pos.f1050y = f5;
+        GetTextLabelArgs.pos.f1051z = f6;
+        GetTextLabelArgs.pos.f1047h = SystemHAlignment.values()[i4];
+        GetTextLabelArgs.pos.f1048v = SystemVAlignment.values()[i5];
+        GetTextLabelArgs.pos.shrinkBoxToText = z8;
+        GetTextLabelArgs.pos.maxWidth = f7;
+        GetTextLabelArgs.pos.maxHeight = f8;
+        GetTextLabelArgs.pos.padWidth = f9;
+        GetTextLabelArgs.pos.padHeight = f10;
+        GetTextLabelArgs.pos.clipMinX = f11;
+        GetTextLabelArgs.pos.clipMinY = f12;
+        GetTextLabelArgs.pos.clipMaxX = f13;
+        GetTextLabelArgs.pos.clipMaxY = f14;
+        GetTextLabelArgs.pos.clip = z9;
+        GetTextLabelArgs.pos.autoAnchor = z10;
+        this.m_textLabelManager.UpdateTextLabel(GetTextLabelArgs);
+    }
+
     public void RemoveTextLabel(int i) {
         this.m_textLabelManager.RemoveTextLabel(i);
     }
