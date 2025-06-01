@@ -419,7 +419,7 @@ public class ModManagerActivity extends Activity implements LoadingListener, Mod
         enableServer.setChecked(sharedPreferences.getBoolean("custom_server", false));
         enableServer.setOnCheckedChangeListener((buttonView, isChecked) -> setCustomServer(isChecked));
 
-        serverSelector.setText(sharedPreferences.getString("server_host", "beyer-ka.de"));
+        serverSelector.setText(sharedPreferences.getString("server_host", "insert-url"));
         serverSelector.setSingleLine(true);
         serverSelector.setImeOptions(EditorInfo.IME_ACTION_DONE);
         serverSelector.addTextChangedListener(new TextWatcher() {
